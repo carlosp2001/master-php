@@ -1,0 +1,5 @@
+Hola soy un archivo de texto
+Como estas?
+Muy bien y tu
+soy un texto metido desde php
+soy un texto metido desde php
