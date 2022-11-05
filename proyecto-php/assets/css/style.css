@@ -37,6 +37,12 @@ body {
 
 }
 
+.fecha {
+    color: #4e4e4e;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
 /*Cabecera*/
 #cabecera {
     width: 85%;
@@ -152,7 +158,8 @@ input[type="password"] {
 }
 
 input[type="button"],
-input[type="submit"] {
+input[type="submit"],
+.boton {
     padding: 5px;
     margin-bottom: 10px;
     display: block;
@@ -162,6 +169,26 @@ input[type="submit"] {
     border: 1px solid #156785;
     cursor: pointer;
     padding: 7px;
+}
+
+.boton {
+    text-align: center;
+    width: 130px;
+}
+
+.boton-naranja {
+    background: orange;
+    border-color: orange;
+}
+
+.boton-verde {
+    background: #21b921;
+    border-color: green;
+}
+
+.boton-rojo {
+    background: red;
+    border-color: #444;
 }
 
 input [type="submit"],

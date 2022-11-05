@@ -11,11 +11,11 @@ if (isset($_POST)) {
     }
 
     // Recoger los valores del formulario
-    $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($db, $_POST['nombre']) : false;
-    $apellidos = isset($_POST['apellidos']) ? mysqli_real_escape_string($db, $_POST['apellidos']) :
+    $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($db, trim($_POST['nombre'])) : false;
+    $apellidos = isset($_POST['apellidos']) ? mysqli_real_escape_string($db, trim($_POST['apellidos'])) :
         false;
-    $email = isset($_POST['email']) ? mysqli_real_escape_string($db, $_POST['email']) : false;
-    $password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
+    $email = isset($_POST['email']) ? mysqli_real_escape_string($db, trim($_POST['email'])) : false;
+    $password = isset($_POST['password']) ? mysqli_real_escape_string($db, trim($_POST['password'])) : false;
 
     // Array errores
     $errores = [];
@@ -62,7 +62,7 @@ if (count($errores) == 0) {
 //    var_dump(password_verify($password, $password_segura));
 //    die();
     // Insertar usuarios en la base de datos en su tabla correspondiente
-    $sql = "insert into usuarios values (null, '$nombre', '$apellidos', '$email', '$password', CURDATE());";
+    $sql = "insert into usuarios values (null, '$nombre', '$apellidos', '$email', '$password_segura', CURDATE());";
     $guardar = mysqli_query($db, $sql);
     if ($guardar) {
         $_SESSION['completado'] = "El registro se ha completado con éxito";
