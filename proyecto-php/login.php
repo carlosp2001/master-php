@@ -42,5 +42,5 @@ if (isset($_POST)) {
 
 }
 
-// Redirigir al index.php
-header('Location: index.php');
+// Redirigir al coche.php
+header('Location: coche.php');

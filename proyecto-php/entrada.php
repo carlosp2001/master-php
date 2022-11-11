@@ -5,7 +5,7 @@ require_once 'includes/helpers.php';
 <?php
 $entrada_actual = conseguirEntrada($db, $_GET['id']);
 if (!isset($entrada_actual['id'])) {
-    header("Location: index.php");
+    header("Location: coche.php");
 }
 ?>
 <?php

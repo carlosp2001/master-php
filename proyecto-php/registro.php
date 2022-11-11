@@ -74,4 +74,4 @@ if (count($errores) == 0) {
     $_SESSION['errores'] = $errores;
 }
 
-header('Location: index.php');
+header('Location: coche.php');

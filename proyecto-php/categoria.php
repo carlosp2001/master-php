@@ -5,7 +5,7 @@ require_once 'includes/helpers.php';
 <?php
 $categoria_actual = conseguirCategoria($db, $_GET['id']);
 if (!isset($categoria_actual['id'])) {
-    header("Location: index.php");
+    header("Location: coche.php");
 }
 ?>
 <?php

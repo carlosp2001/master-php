@@ -4,7 +4,7 @@ require_once 'includes/helpers.php';
 ?>
 <?php
 if (!isset($_POST['busqueda'])) {
-    header("Location: index.php");
+    header("Location: coche.php");
 }
 
 ?>

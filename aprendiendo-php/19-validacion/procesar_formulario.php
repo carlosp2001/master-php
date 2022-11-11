@@ -39,11 +39,11 @@ if (!empty($_POST['nombre']) &&
 
 
 } else {
-    header("Location: index.php?error=$error");
+    header("Location: coche.php?error=$error");
 }
 
 if ($error != "ok") {
-    header("Location:index.php?error=$error");
+    header("Location:coche.php?error=$error");
 }
 ?>
 <!doctype html>

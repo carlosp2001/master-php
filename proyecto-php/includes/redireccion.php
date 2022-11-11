@@ -6,5 +6,5 @@ if(!isset($_SESSION)){
 
 
 if (!isset($_SESSION['usuario'])) {
-    header('Location: index.php');
+    header('Location: coche.php');
 }
