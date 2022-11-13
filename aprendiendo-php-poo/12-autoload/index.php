@@ -1,6 +1,6 @@
 <?php
 
-//require_once 'clases/usuario.php';
+//require_once 'clases/UsuarioController.php';
 //require_once 'clases/categoria.php';
 //require_once 'clases/entrada.php';
 
