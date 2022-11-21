@@ -40,11 +40,11 @@ class Usuario {
 
 }
 
-
-$usuario = new Usuario();
-// Acceder a constantes
-echo $usuario::URL_COMPLETA . "<br>";
-
-// A nivel de clase
-echo Usuario::URL_COMPLETA . "<br>";
-var_dump($usuario);
+//
+//$usuario = new Usuario();
+//// Acceder a constantes
+//echo $usuario::URL_COMPLETA . "<br>";
+//
+//// A nivel de clase
+//echo Usuario::URL_COMPLETA . "<br>";
+//var_dump($usuario);
