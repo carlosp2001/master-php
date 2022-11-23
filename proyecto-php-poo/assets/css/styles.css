@@ -29,6 +29,17 @@ a:hover {
     color: red;
 }
 
+table {
+    text-align: center;
+    width: 100%;
+    border: 1px solid #555;
+}
+
+td {
+    border-top: 1px solid #ccc;
+    padding: 2px;
+}
+
 /*CONTAINER*/
 #container {
     width: 80%;
@@ -224,6 +235,12 @@ button,
     text-decoration: none;
 }
 
+.button-small {
+    width: 120px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /*CENTRAL*/
 #central {
     width: 72%;
@@ -280,3 +297,4 @@ button,
     background: #222222;
     border-top: 4px solid #01B1EA;
 }
+
