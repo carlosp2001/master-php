@@ -179,7 +179,9 @@ label,
 input[type="text"],
 input[type="password"],
 input[type="email"],
-select {
+input[type="number"],
+select,
+textarea {
     display: block;
     width: 95%;
     margin-top: 2px;
@@ -194,10 +196,17 @@ button {
     margin-top: 10px;
 }
 
+/*FORMS*/
+.form_container {
+    width: 50%;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
-select {
+input[type="number"],
+select,
+textarea {
     border: 1px solid #C9C9C9;
     box-shadow: 0px 0px 2px #ccc inset;
     background: white;
@@ -271,6 +280,7 @@ button,
     margin-right: 10px;
     text-align: center;
 }
+
 .product img {
     width: 100px;
     margin-bottom: 10px;
