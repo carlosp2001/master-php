@@ -169,6 +169,20 @@ class Producto
         return $productos;
     }
 
+    public function getAllCategory()
+    {
+        $sql = "select p.*, c.nombre as 'catnombre' from productos p inner join categorias c on c.id = p.categoria_id where p.categoria_id = {$this->getCategoriaId()} order by id desc";
+        $productos = $this->db->query($sql);
+        return $productos;
+    }
+
+    public function getRandom($limit)
+    {
+        $productos = $this->db->query("select * from productos order by rand() limit $limit");
+        return $productos;
+
+    }
+
     public function getOne()
     {
         $producto = $this->db->query("select * from productos where id= {$this->getId()}");

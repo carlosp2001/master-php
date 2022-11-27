@@ -7,6 +7,9 @@ class productoController
     {
 //        echo "Controlador Productos, Accion Index";
 
+        $producto = new Producto();
+        $productos = $producto->getRandom(6);
+//        var_dump($productos->fetch_object());
         // renderizar vista
         require_once 'views/producto/destacados.php';
     }
