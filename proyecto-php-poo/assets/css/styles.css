@@ -40,6 +40,10 @@ td {
     padding: 2px;
 }
 
+.thumb {
+    width: 200px;
+}
+
 /*CONTAINER*/
 #container {
     width: 80%;
@@ -248,6 +252,16 @@ button,
     width: 120px;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.button-gestion {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.button-red {
+    background: red;
+    border: #cf1717;
 }
 
 /*CENTRAL*/
