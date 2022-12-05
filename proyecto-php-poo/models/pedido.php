@@ -184,6 +184,14 @@ class Pedido
         return $pedido->fetch_object();
     }
 
+    public function getAllByUser()
+    {
+        $sql = "select p.* from tienda_master.pedidos p 
+where p.usuario_id = {$this->getUsuarioId()} order by id desc ";
+        $pedido = $this->db->query($sql);
+        return $pedido;
+    }
+
     public function getProductosByPedido($id)
     {
 //        $sql = "select * from tienda_master.productos where id in (select producto_id from tienda_master.lineas_pedidos where pedido_id = {$id})";
@@ -226,6 +234,24 @@ where lp.pedido_id={$id}";
             $result = true;
         }
 
+        return $result;
+    }
+
+    public function edit()
+    {
+
+        $sql = "update tienda_master.pedidos set estado = '{$this->getEstado()}'";
+
+        $sql .= " WHERE id={$this->getId()};";
+
+        $save = $this->db->query($sql);
+        $result = false;
+        if ($save) {
+            $result = true;
+        } else {
+            echo $sql;
+            echo $this->db->error;
+        }
         return $result;
     }
 
