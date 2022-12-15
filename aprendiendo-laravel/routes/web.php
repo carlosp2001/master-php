@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PeliculaController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,20 @@ Route::get('/', function () {
     echo "Hola mundo";
 });
 
+Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'index']);
+// Colocar nombre a ruta
+//Route::get('/detalle/{id?}', [PeliculaController::class, 'detalle'])->name('detalle.pelicula');
+
+
+// Middleware TestYear.php
+// Hay que dar de alta el middleware en kernel
+Route::get('/detalle/{year?}', [PeliculaController::class, 'detalle'])->name('detalle.pelicula')->middleware('testyear');
+
+
+Route::resource('usuario', UsuarioController::class);
+
+//Crear ruta de redireccion
+Route::get('/redirigir', [PeliculaController::class, 'redirigir']);
 
 /*
 GET: Conseguir datos
@@ -38,14 +54,40 @@ Route::get('/mostrar-fecha', function () {
 //    return view('pelicula', array('titulo'=>$titulo));
 //});
 
-Route::get('/pelicula/{titulo}/{year?}', function ($titulo = "No hay pelicula seleccionada", $year=2019) {
+Route::get('/pelicula/{titulo}/{year?}', function ($titulo = "No hay pelicula seleccionada", $year = 2019) {
     return view('pelicula', array(
-        'titulo'=>$titulo,
-        'year'=>$year));
+        'titulo' => $titulo,
+        'year' => $year));
 })->where(array(
     // Expresion regular para saber que caracteres pueden ser ingresados en el parametro de la url
     'titulo' => '[a-zA-Z]+',
     'year' => '[0-9]+'
 ));
+
+// Consola de laravel
+// php artisan make:controller <nombre controlador>
+// php artisan route:list   Muestra la lista de todas las rutas existentes con sus parametros
+
+Route::get('/listado-peliculas', function () {
+    $titulo = "Listado de películas";
+
+//    return view('peliculas.listado', array(
+//        'titulo' => $titulo
+//    ));
+
+    // Enviar parámetros con metodo with
+    $listado = ['Batman', 'Spiderman', 'Gran Torino'];
+    return view('peliculas.listado')
+        ->with('titulo', $titulo)
+        ->with('listado', $listado);
+});
+
+
+Route::get('/pagina-generica', function () {
+    return view('pagina');
+});
+
+Route::get('/formulario', [PeliculaController::class, 'formulario']);
+Route::post('/recibir', [PeliculaController::class, 'recibir']);
 
 
