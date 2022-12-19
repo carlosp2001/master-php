@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\FrutaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,5 +90,11 @@ Route::get('/pagina-generica', function () {
 
 Route::get('/formulario', [PeliculaController::class, 'formulario']);
 Route::post('/recibir', [PeliculaController::class, 'recibir']);
+
+//Rutas de frutas
+Route::group(['prefix'=>'frutas'], function (){
+    Route::get('index', [FrutaController::class, 'index']);
+    Route::get('detail/{id}', [FrutaController::class, 'detail']);
+});
 
 
