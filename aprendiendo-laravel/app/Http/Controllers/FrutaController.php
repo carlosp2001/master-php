@@ -11,7 +11,7 @@ class FrutaController extends Controller
     public function index()
     {
         // Obtener un listado de frutas
-        $frutas = DB::table('frutas')->get();
+        $frutas = DB::table('frutas')->orderBy('id', 'desc')->get();
         return view('fruta.index', ['frutas' => $frutas]);
     }
 
