@@ -1,0 +1,15 @@
+-- Crear un proyecto de laravel
+
+1 - composer create-project laravel/laravel proyecto-laravel-5v "5.6.*" --prefer-dist
+
+
+Dar permisos
+
+sudo chmod -R 777 proyecto-laravel/*
+
+Crear autenticación
+
+-- Primero
+composer require laravel/ui
+
+php artisan ui vue --auth

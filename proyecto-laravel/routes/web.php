@@ -13,32 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Models\Image;
-
 Route::get('/', function () {
-    $images = Image::all();
-    foreach ($images as $image) {
-        echo $image->image_path . "</br>";
-        echo $image->description . "</br>";
+    $image = Image::all();
+    foreach ($image as $image) {
+        echo $image->image_path . '<br>';
+        echo $image->description . '<br>';
+        echo $image->user->name . ' ' . $image->user->surname . '<br>';
 
 
-
-        if(count($image->comments) > 0){
-            echo "<h4>Comentarios</h4>";
+        if (count($image->comments) > 0) {
+            echo '<strong>Comentarios</strong><br>';
             foreach ($image->comments as $comment) {
-                echo $comment->user->name . ' ' . $comment->user->surname . ": ";
+                echo $comment->user->name . ' ' .$comment->user->surname . ': ';
                 echo $comment->content . '<br>';
             }
-
-
         }
-        echo '<strong> Likes </strong>' . count($image->likes) . '<br>';
-
-        var_dump($image->user->name);
-        echo "<hr>";
-
+        echo '<strong>LIKES: ' . count($image->likes) . '</strong>';
+        echo '<hr>';
     }
 
     die();
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

@@ -1,0 +1,10 @@
+Dar permisos
+
+sudo chmod -R 777 proyecto-laravel/*
+
+Crear autenticación
+
+-- Primero
+composer require laravel/ui
+
+php artisan ui vue --auth
