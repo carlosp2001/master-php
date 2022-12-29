@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -55,7 +56,12 @@
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">Subir Imagen</a>
-
+                        </li>
+                        <li>
+                            @include('includes.avatar')
+                        </li>
+                        <li>
+                            &nbsp;
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

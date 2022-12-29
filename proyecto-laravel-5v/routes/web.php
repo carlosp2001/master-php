@@ -44,4 +44,4 @@ Route::get('/configuracion', 'UserController@config')->name('config');
 
 Route::post('/user/update', 'UserController@update')->name('user.update');
 
-Route::get('/user/avatar/{filename}', 'UserController@getImage')->name('config')->name('user.avatar');
+Route::get('/user/avatar/{filename}', 'UserController@getImage')->name('user.avatar');
