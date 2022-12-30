@@ -9,7 +9,7 @@
 
 
                     <div class="card-body">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('image.save') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label for="image_path" class="col-md-3 col-form-label text-md-right">Imagen</label>
