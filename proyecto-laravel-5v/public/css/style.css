@@ -18,3 +18,21 @@ form .avatar {
     width: 100%;
     height: 100%;
 }
+
+.pub_image img{
+    width: 55px;
+    height: 55px;
+    border-radius: 900px;
+    overflow: hidden;
+}
+
+.pub_image .container-avatar {
+    float: left;
+    margin-right: 15px;
+}
+
+.pub_image .data-user {
+    font-weight: bold;
+    line-height: 35px;
+}
+
