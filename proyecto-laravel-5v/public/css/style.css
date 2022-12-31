@@ -64,4 +64,20 @@ form .avatar {
 
 .pub_image .description {
     padding: 20px;
+    padding-bottom: 0;
+}
+
+.pub_image .btn-comments {
+    margin: 20px;
+    margin-top: 0;
+}
+
+.likes {
+    float: left;
+    padding: 5px 0;
+    margin-left: 16px;
+}
+
+.likes img {
+    width: 20px;
 }
