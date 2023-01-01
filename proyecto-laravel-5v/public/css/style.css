@@ -40,6 +40,10 @@ form .avatar {
     line-height: 35px;
 }
 
+.pub_image .data-user a {
+    color: #444;
+}
+
 .pub_image .nickname {
     color: gray;
 }
@@ -81,3 +85,5 @@ form .avatar {
 .likes img {
     width: 20px;
 }
+
+
