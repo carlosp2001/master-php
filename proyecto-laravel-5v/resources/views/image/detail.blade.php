@@ -38,11 +38,16 @@
                         <div class="comments">
                             <h2>Comentarios</h2>
                             <hr>
-                            <form action="" method="post">
+                            <form action="{{route('comment.save')}}" method="post">
                                 @csrf
-                                <input type="hidden" value="" name="image_id" value="{{ $image->id }}">
+                                <input type="hidden" name="image_id" value="{{ $image->id }}">
                                 <p>
-                                    <textarea class="form-control" name="content" required></textarea>
+                                    <textarea class="form-control" name="content" ></textarea>
+                                    @if($errors->has('content'))
+                                        <span class="alert-danger" role="alert">
+                                            <strong>{{ $errors->first('content') }}</strong>
+                                        </span>
+                                    @endif
                                 </p>
                                 <button type="submit" class="btn btn-success">Enviar</button>
                             </form>
