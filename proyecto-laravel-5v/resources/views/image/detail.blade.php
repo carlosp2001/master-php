@@ -51,6 +51,15 @@
                                 </p>
                                 <button type="submit" class="btn btn-success">Enviar</button>
                             </form>
+                            <hr>
+                            @foreach($image->comments as $comment)
+                                <div class="comment">
+                                        <span class="nickname">{{'@' . $comment->user->nick}}</span>
+                                        <span
+                                            class="nickname date">{{' | ' . \FormatTime::LongTimeFilter( $comment->created_at)}}</span>
+                                        <p>{{$comment->content}}</p>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
