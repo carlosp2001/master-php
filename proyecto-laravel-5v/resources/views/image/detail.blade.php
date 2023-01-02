@@ -42,9 +42,9 @@
                                 @csrf
                                 <input type="hidden" name="image_id" value="{{ $image->id }}">
                                 <p>
-                                    <textarea class="form-control" name="content" ></textarea>
+                                    <textarea class="form-control {{$errors->has('content') ? 'is-invalid' : ''}}" name="content" ></textarea>
                                     @if($errors->has('content'))
-                                        <span class="alert-danger" role="alert">
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('content') }}</strong>
                                         </span>
                                     @endif
