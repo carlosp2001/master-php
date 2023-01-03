@@ -42,7 +42,8 @@
                                 @csrf
                                 <input type="hidden" name="image_id" value="{{ $image->id }}">
                                 <p>
-                                    <textarea class="form-control {{$errors->has('content') ? 'is-invalid' : ''}}" name="content" ></textarea>
+                                    <textarea class="form-control {{$errors->has('content') ? 'is-invalid' : ''}}"
+                                              name="content"></textarea>
                                     @if($errors->has('content'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('content') }}</strong>
@@ -54,10 +55,13 @@
                             <hr>
                             @foreach($image->comments as $comment)
                                 <div class="comment">
-                                        <span class="nickname">{{'@' . $comment->user->nick}}</span>
-                                        <span
-                                            class="nickname date">{{' | ' . \FormatTime::LongTimeFilter( $comment->created_at)}}</span>
-                                        <p>{{$comment->content}}</p>
+                                    <span class="nickname">{{'@' . $comment->user->nick}}</span>
+                                    <span
+                                        class="nickname date">{{' | ' . \FormatTime::LongTimeFilter( $comment->created_at)}}</span>
+                                    <p>{{$comment->content}}</p>
+                                    @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
+                                    <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" class="btn btn-sm btn-danger">Eliminar</a>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
