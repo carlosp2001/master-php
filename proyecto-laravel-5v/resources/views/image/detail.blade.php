@@ -32,7 +32,22 @@
                             <p>{{$image->description}}</p>
                         </div>
                         <div class="likes">
-                            <img src="{{asset('img/heart-black.png')}}" alt="">
+
+                            {{--                                Comprobar si el usuario le dio like a la imagen--}}
+                            <?php $user_like = false; ?>
+                            @foreach($image->likes as $like)
+                                @if($like->user->id == \Auth::user()->id)
+                                    <?php $user_like = true; ?>
+                                @endif
+                            @endforeach
+                            @if($user_like)
+                                <img src="{{asset('img/heart-red.png')}}" alt="" class="btn-dislike"
+                                     data-id="{{$image->id}}">
+                            @else
+                                <img src="{{asset('img/heart-black.png')}}" alt="" class="btn-like"
+                                     data-id="{{$image->id}}">
+                            @endif
+                            <span class="number_likes">{{count($image->likes)}}</span>
                         </div>
                         <div class="clearfix"></div>
                         <div class="comments">
@@ -60,7 +75,8 @@
                                         class="nickname date">{{' | ' . \FormatTime::LongTimeFilter( $comment->created_at)}}</span>
                                     <p>{{$comment->content}}</p>
                                     @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
-                                    <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" class="btn btn-sm btn-danger">Eliminar</a>
+                                        <a href="{{ route('comment.delete', ['id' => $comment->id]) }}"
+                                           class="btn btn-sm btn-danger">Eliminar</a>
                                     @endif
                                 </div>
                             @endforeach
