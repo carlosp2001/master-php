@@ -7,8 +7,6 @@
                 @foreach($user->images as $image)
                     @include('includes.image', ['image' => $image])
                 @endforeach
-
-
             </div>
 
         </div>
