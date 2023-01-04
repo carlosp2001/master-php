@@ -4,10 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Like;
+use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
     //
+    public function index()
+    {
+        $user = Auth::user();
+        $likes = Like::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(5);
+
+        return view('like.index', [
+            'likes' => $likes
+        ]);
+    }
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -56,4 +67,5 @@ class LikeController extends Controller
             ]);
         }
     }
+
 }
