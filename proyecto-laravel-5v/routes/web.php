@@ -55,4 +55,5 @@ Route::get('/perfil/{id}', 'UserController@profile')->name('profile');
 Route::get('/image/delete/{id}', 'ImageController@delete')->name('image.delete');
 Route::get('/image/editar/{id}', 'ImageController@edit')->name('image.edit');
 Route::post('/image/update', 'ImageController@update')->name('image.update');
+Route::get('/gente', 'UserController@index')->name('user.index');
 
