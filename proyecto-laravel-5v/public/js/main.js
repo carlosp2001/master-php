@@ -51,4 +51,14 @@ window.addEventListener("load", function () {
 
     dislike();
 
+    // BUSCADOR
+    $('#buscador').submit(function (e) {
+
+        console.log($('#search').val());
+
+        $(this).attr('action', url + '/gente/' + $('#buscador #search').val())
+
+
+    })
+
 });
