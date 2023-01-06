@@ -31,5 +31,14 @@ class HomeController extends AbstractController
         
     }
 
+    public function redirigir()
+    {
+//        return $this->redirectToRoute('index', [], 301);
+//        return $this->redirectToRoute('animales', [
+//            'nombre' => 'Carlos',
+//            'apellidos' => '1'
+//        ]);
 
+        return $this->redirect('https://victorroblesweb.es/academy');
+}
 }
