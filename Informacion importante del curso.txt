@@ -14,3 +14,7 @@ php -S 127.0.0.1:8000 -t public
 
 Por defecto symfony no nos deja trabajar en un servidor apache, debemos instalar el symfony apache pack
 composer require symfony/apache-pack
+
+Información acerca de twig
+
+- No acepta el signo de dolar en las variables
