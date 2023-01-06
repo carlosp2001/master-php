@@ -3,5 +3,7 @@ index:
     controller: App\Controller\HomeController::index
 
 animales:
-    path: /animales
+#    path: /animales/{nombre?}
+    path: /animales/{nombre}/{apellidos}
     controller: App\Controller\HomeController::animales
+    defaults: { nombre: 'Carlos'}
