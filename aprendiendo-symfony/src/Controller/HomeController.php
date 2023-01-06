@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+    // Rutas con notaciones
     /**
      * @Route("/home", name="app_home")
      */
@@ -17,5 +18,14 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'hello' => 'Hola Mundo con Symfony 4'
         ]);
+    }
+
+    public function animales()
+    {
+        $title = "Bienvenido a la pagina de animales";
+        return $this->render('home/animales.html.twig', [
+            'title' => $title
+        ]);
+        
     }
 }
