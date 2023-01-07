@@ -47,14 +47,29 @@
     {% endfor %}
 
 
-{#    Inicia con / starts with#}
+    {#    Inicia con / starts with #}
     {% if aves.color starts with 'gr' %}
         <h1>Empieza por G</h1>
     {% endif %}
 
-    {#    Termina con / ends with#}
+    {#    Termina con / ends with #}
     {% if aves.color ends with 's' %}
         <h1>Termina por s</h1>
     {% endif %}
+
+    <hr>
+    <h1>Funciones</h1>
+    {#    Funciones predefinidas #}
+    {#    Sacar el numero menor #}
+    {{ min([9, 11, 6, 99, 2]) }}
+    {{ random(animales) }}
+
+    {#    Sacar el numero mayor #}
+    {{ max([9, 11, 6, 99, 2]) }}
+
+    {#    Rango #}
+    {% for i in range(0, 100, 5) %}
+        {{ i }} <br>
+    {% endfor %}
 
 {% endblock %}
