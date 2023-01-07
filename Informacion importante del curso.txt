@@ -32,3 +32,6 @@ php bin/console make:entity --regenerate App
 
 Generar entidades en yml
 php bin/console doctrine:mapping:import App\\Entity yml --path=src/Entity
+
+Crear una nueva entidad
+php bin/console make:entity Usuario
