@@ -45,4 +45,16 @@
     {% for i in 0..animales|length %}
         {{ i }}<br/>
     {% endfor %}
+
+
+{#    Inicia con / starts with#}
+    {% if aves.color starts with 'gr' %}
+        <h1>Empieza por G</h1>
+    {% endif %}
+
+    {#    Termina con / ends with#}
+    {% if aves.color ends with 's' %}
+        <h1>Termina por s</h1>
+    {% endif %}
+
 {% endblock %}
