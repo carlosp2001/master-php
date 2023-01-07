@@ -21,3 +21,14 @@ Información acerca de twig
 
 Crear la base de datos del proyecto en doctrine
 php bin/console doctrine:database:create
+
+Crear entidades a partir de la base de datos
+php bin/console doctrine:mapping:convert --from-database yml ./src/Entity
+Crear clase
+php bin/console doctrine:mapping:convert --from-database annotation ./src/Entity
+
+Debemos agregar namespace App\Entity; a la entidad para luego generar los getter y setters en la clase con el comando
+php bin/console make:entity --regenerate App
+
+Generar entidades en yml
+php bin/console doctrine:mapping:import App\\Entity yml --path=src/Entity
