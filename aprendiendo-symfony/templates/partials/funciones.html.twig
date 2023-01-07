@@ -12,3 +12,10 @@
     {% for i in range(0, 100, 5) %}
         {{ i }} <br>
     {% endfor %}
+
+<h1>Filtros</h1>
+
+{{ animales|length }}
+{% set email = '     carlos@carlos.com  ' %}
+{#Trim quitar espacios adelante y despues#}
+{{ dump(email|trim|upper|lower) }}
