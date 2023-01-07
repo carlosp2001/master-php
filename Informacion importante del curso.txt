@@ -18,3 +18,6 @@ composer require symfony/apache-pack
 Información acerca de twig
 
 - No acepta el signo de dolar en las variables
+
+Crear la base de datos del proyecto en doctrine
+php bin/console doctrine:database:create
