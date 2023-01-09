@@ -35,3 +35,6 @@ php bin/console doctrine:mapping:import App\\Entity yml --path=src/Entity
 
 Crear una nueva entidad
 php bin/console make:entity Usuario
+
+Mostrar diferencias que hay entre entidades y la base de datos
+php bin/console doctrine:migrations:diff
