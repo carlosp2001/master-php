@@ -12,6 +12,7 @@ class AnimalController extends AbstractController
 
     public function index(): Response
     {
+        $em = $this->getDoctrine()->getManager();
         $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
         $animales = $animal_repo->findAll();
 
@@ -41,10 +42,17 @@ class AnimalController extends AbstractController
 
         $resultset = $qb->execute();
 
-        var_dump($resultset);
+
 
 //        var_export($animal);
 
+
+        // DQL
+        $dql = "select a from App\Entity\Animal a where a.raza = 'americana'";
+//        $dql = "select a from App\Entity\Animal a order by a.id desc";
+        $query = $em->createQuery($dql);
+        $resultset = $query->execute();
+        var_export($resultset);
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
             'animales' => $animales
