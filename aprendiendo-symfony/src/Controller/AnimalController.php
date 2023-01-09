@@ -42,8 +42,6 @@ class AnimalController extends AbstractController
 
         $resultset = $qb->execute();
 
-
-
 //        var_export($animal);
 
 
@@ -52,7 +50,16 @@ class AnimalController extends AbstractController
 //        $dql = "select a from App\Entity\Animal a order by a.id desc";
         $query = $em->createQuery($dql);
         $resultset = $query->execute();
-        var_export($resultset);
+
+
+
+        // SQL
+        $connection = $this->getDoctrine()->getConnection();
+        $sql = 'SELECT * FROM animales ORDER BY id asc';
+        $prepare = $connection->query($sql);
+        $resultset = $prepare->fetchAll(); //fetch - fetchAssociative
+        var_dump($resultset);
+
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
             'animales' => $animales
