@@ -58,8 +58,12 @@ class AnimalController extends AbstractController
         $sql = 'SELECT * FROM animales ORDER BY id asc';
         $prepare = $connection->query($sql);
         $resultset = $prepare->fetchAll(); //fetch - fetchAssociative
-        var_dump($resultset);
+//        var_dump($resultset);
 
+
+        // Usando repositorio
+        $animals = $this->getDoctrine()->getRepository(Animal::class)->findByRaza('desc');
+        var_dump($animals);
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
             'animales' => $animales
