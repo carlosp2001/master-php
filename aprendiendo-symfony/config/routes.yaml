@@ -28,4 +28,8 @@ animal_detail:
     path: /animal/{id}
     controller: App\Controller\AnimalController::animal
 
+animal_update:
+    path: /animal/update/{id}
+    controller: App\Controller\AnimalController::update
+
 

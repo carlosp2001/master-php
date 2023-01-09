@@ -60,13 +60,13 @@ class AnimalController extends AbstractController
         return new Response('El animal guardado tiene el id: ' . $animal->getId());
     }
 
-    public function animal($id)
+    public function animal(Animal $animal)
     {
-        // Cargar respositorio
-        $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
-
-        // Consulta
-        $animal = $animal_repo->find($id);
+//        // Cargar respositorio
+//        $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
+//
+//        // Consulta
+//        $animal = $animal_repo->find($id);
 
         // Comprobar si el resultado es correcto
         if (!$animal) {
@@ -74,6 +74,43 @@ class AnimalController extends AbstractController
         } else {
             $message = 'Tu animal elegido es: ' . $animal->getTipo() . ' - ' . $animal->getRaza();
         }
+        return new Response($message);
+    }
+
+    public function update($id)
+    {
+        // Cargar doctrine
+        $doctrine = $this->getDoctrine();
+
+        // Cargar entityManager
+        $em = $doctrine->getManager();
+
+        // Cargar repo de entidad Animal
+        $animal_repo = $em->getRepository(Animal::class);
+
+        // Find para conseguir el objeto
+        $animal = $animal_repo->find($id);
+
+        // Comprobar si el objeto me llega
+        if (!$animal) {
+            $message = 'El animal no existe en la base de datos';
+        } else {
+
+            // Asignarle los valores al objeto
+            $animal->setTipo("Perro $id");
+            $animal->setColor('rojo');
+
+            // Persistir en doctrine
+            $em->persist($animal);
+
+            // Guardar en la bd
+            $em->flush();
+
+            $message = 'Has actualizado el animal ' . $animal->getId();
+
+        }
+
+        // Respuesta
         return new Response($message);
     }
 }
