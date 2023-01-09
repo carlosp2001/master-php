@@ -12,8 +12,29 @@ class AnimalController extends AbstractController
 
     public function index(): Response
     {
+        $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
+        $animales = $animal_repo->findAll();
+
+        // Sacar un unico registro
+//        $animal = $animal_repo->findOneBy([
+//            'tipo' => 'Avestruz'
+//        ]);
+
+        // Sacar todos los registros que cumplan
+        $animal = $animal_repo->findBy([
+            'raza' => 'americana'],
+            // Ordenacion por parametro
+            [
+                'id' => 'DESC'
+            ]
+        );
+
+        var_export($animal);
+
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
+            'animales' => $animales
+
         ]);
     }
 
