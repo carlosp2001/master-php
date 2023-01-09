@@ -3,12 +3,32 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Animal;
 
+
 class AnimalController extends AbstractController
 {
+    public function crearAnimal()
+    {
+        $animal = new Animal();
+        $form = $this->createFormBuilder($animal)
+            ->setAction($this->generateUrl('animal_save'))
+            ->setMethod('POST')
+            ->add('tipo', TextType::class)
+            ->add('color', TextType::class)
+            ->add('raza', TextType::class)
+            ->add('submit', SubmitType::class)
+            ->getForm();
+
+        return $this->render('animal/crear-animal.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 
     public function index(): Response
     {
@@ -50,7 +70,6 @@ class AnimalController extends AbstractController
 //        $dql = "select a from App\Entity\Animal a order by a.id desc";
         $query = $em->createQuery($dql);
         $resultset = $query->execute();
-
 
 
         // SQL
