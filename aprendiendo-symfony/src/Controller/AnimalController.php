@@ -63,7 +63,7 @@ class AnimalController extends AbstractController
 
         // Usando repositorio
         $animals = $this->getDoctrine()->getRepository(Animal::class)->findByRaza('desc');
-        var_dump($animals);
+        var_export($animals);
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
             'animales' => $animales

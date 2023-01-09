@@ -18,7 +18,12 @@
             $qb = $this->createQuerybuilder('a')
                 ->getQuery();
             $resultset = $qb->execute();
-            return $resultset;
+
+            $coleccion = array(
+                'name' => 'Coleccion de animales',
+                'animales' => $resultset
+            );
+            return $coleccion;
 
         }
     }
