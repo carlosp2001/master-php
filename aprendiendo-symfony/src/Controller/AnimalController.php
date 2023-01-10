@@ -12,25 +12,27 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Animal;
 
+use App\Form\AnimalType;
+
 
 class AnimalController extends AbstractController
 {
     public function crearAnimal(Request $request)
     {
         $animal = new Animal();
-        $form = $this->createFormBuilder($animal)
-            //->setAction($this->generateUrl('animal_save'))
+        $form = $this->createForm(AnimalType::class, $animal);
+//            ->setAction($this->generateUrl('animal_save'))
 //            ->setMethod('POST')
-            ->add('tipo', TextType::class, [
-                'label' => 'Tipo de animal'
-            ])
-            ->add('color', TextType::class)
-            ->add('raza', TextType::class)
-            ->add('submit', SubmitType::class, [
-                'label' => 'Crear animal',
-                'attr' => ['class' => 'btn btn-success']
-            ])
-            ->getForm();
+//            ->add('tipo', TextType::class, [
+//                'label' => 'Tipo de animal'
+//            ])
+//            ->add('color', TextType::class)
+//            ->add('raza', TextType::class)
+//            ->add('submit', SubmitType::class, [
+//                'label' => 'Crear animal',
+//                'attr' => ['class' => 'btn btn-success']
+//            ])
+//            ->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
