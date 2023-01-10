@@ -38,3 +38,9 @@ php bin/console make:entity Usuario
 
 Mostrar diferencias que hay entre entidades y la base de datos
 php bin/console doctrine:migrations:diff
+
+
+Instalar Symfony para el proyecto completo
+
+composer create-project symfony/website-skeleton
+composer create-project symfony/website-skeleton:^4.1.4.2 NombreProyecton
