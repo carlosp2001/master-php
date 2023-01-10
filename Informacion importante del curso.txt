@@ -44,3 +44,16 @@ Instalar Symfony para el proyecto completo
 
 composer create-project symfony/website-skeleton
 composer create-project symfony/website-skeleton:^4.1.4.2 NombreProyecton
+
+- Lanzar el servidor de php
+php -S 127.0.0.1:8000 -t public
+
+- Generar las entidades de la base de datos
+
+php bin/console doctrine:mapping:import App\Entity annotation --path=src/Entity
+
+- Generar los getters y setters de las entidades
+
+Primeramente colocar el namespace App\Entity a las entidades
+
+php bin/console make:entity --regenerate App
