@@ -4,6 +4,7 @@ namespace App\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Animales
@@ -27,6 +28,10 @@ class Animal
      * @var string|null
      *
      * @ORM\Column(name="tipo", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z]+/",
+     *     message="El tipo debe estar formada por letras")
      */
     private $tipo;
 
@@ -34,6 +39,9 @@ class Animal
      * @var string|null
      *
      * @ORM\Column(name="color", type="string", length=255, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z]+/",
+     *     message="El color debe estar formada por letras")
      */
     private $color;
 
@@ -41,6 +49,9 @@ class Animal
      * @var string|null
      *
      * @ORM\Column(name="raza", type="string", length=255, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z]+/",
+     *     message="La raza debe estar formada por letras")
      */
     private $raza;
 
