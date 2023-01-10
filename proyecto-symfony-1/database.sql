@@ -14,6 +14,11 @@ create table if not exists users
     constraint pk_users primary key (id)
 ) engine = InnoDb;
 
+insert into users values (null, 'ROLE_USER', 'Victor', 'Robles', 'victor@victor.com', 'password', CURTIME());
+insert into users values (null, 'ROLE_USER', 'Manolo', 'Perez', 'manolo@manolo.com', 'password', CURTIME());
+insert into users values (null, 'ROLE_USER', 'Carlos', 'Sanchez', 'carlos@carlos.com', 'password', CURTIME());
+
+
 create table if not exists tasks
 (
     id         int(255) auto_increment not null,
@@ -27,3 +32,10 @@ create table if not exists tasks
     constraint fk_task_user foreign key (user_id) references users(id)
 
 ) engine = InnoDb;
+
+insert into tasks values (null, 1, 'Tarea 1', 'Contenido de prueba 1', 'high', 40, CURTIME());
+insert into tasks values (null, 1, 'Tarea 2', 'Contenido de prueba 2', 'low', 20, CURTIME());
+insert into tasks values (null, 2, 'Tarea 3', 'Contenido de prueba 3', 'medium', 10, CURTIME());
+insert into tasks values (null, 3, 'Tarea 4', 'Contenido de prueba 4', 'high', 50, CURTIME());
+
+
