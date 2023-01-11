@@ -17,8 +17,8 @@ class TaskController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
 
-//        $task_repo = $this->getDoctrine()->getRepository(Task::class);
-//        $tasks = $task_repo->findAll();
+        $task_repo = $this->getDoctrine()->getRepository(Task::class);
+        $tasks = $task_repo->findBy([], ['id'=>'DESC']);
 //
 //        foreach ($tasks as $task) {
 //            // Imprimir el nombre del usuario mediante las relaciones del ORM
@@ -39,7 +39,7 @@ class TaskController extends AbstractController
 //        }
 
         return $this->render('task/index.html.twig', [
-            'controller_name' => 'TaskController',
+            'tasks' => $tasks,
         ]);
     }
 }
