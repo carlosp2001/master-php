@@ -116,3 +116,24 @@ table td {
     background: #e9ffea;
 }
 
+.buttons a {
+    text-decoration: none;
+    border: 1px solid green;
+    padding: 10px;
+    color: white;
+    background: #00aa33;
+}
+
+.buttons .btn-delete {
+    background: red;
+    border-color: #930606;
+}
+
+.buttons .btn-edit {
+    background: orange;
+    border-color: #f38b06;
+}
+
+.data-task {
+    color: gray;
+}
