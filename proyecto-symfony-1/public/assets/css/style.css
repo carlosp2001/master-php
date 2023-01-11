@@ -7,6 +7,12 @@ body {
     clear: both;
 }
 
+.right {
+    float: right !important;
+    border-right: 0px;
+
+}
+
 .example-wrapper {
     margin: 1em auto;
     max-width: 800px;

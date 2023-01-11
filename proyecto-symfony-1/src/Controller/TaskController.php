@@ -28,15 +28,15 @@ class TaskController extends AbstractController
         $user_repo = $this->getDoctrine()->getRepository(User::class);
         $users = $user_repo->findAll();
 
-        foreach ($users as $user) {
-            // Imprimir el nombre del usuario mediante las relaciones del ORM
-            echo "<h1>{$user->getName()} {$user->getSurname()}</h1>";
-
-            foreach ($user->getTasks() as $task) {
-            // Imprimir el nombre del usuario mediante las relaciones del ORM
-            echo $task->getTitle() . "<br>";
-        }
-        }
+//        foreach ($users as $user) {
+//            // Imprimir el nombre del usuario mediante las relaciones del ORM
+//            echo "<h1>{$user->getName()} {$user->getSurname()}</h1>";
+//
+//            foreach ($user->getTasks() as $task) {
+//            // Imprimir el nombre del usuario mediante las relaciones del ORM
+//            echo $task->getTitle() . "<br>";
+//        }
+//        }
 
         return $this->render('task/index.html.twig', [
             'controller_name' => 'TaskController',
