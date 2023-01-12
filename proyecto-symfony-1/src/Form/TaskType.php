@@ -33,7 +33,7 @@ class TaskType extends AbstractType
             'label' => 'Horas presupuestadas'
         ]);
         $builder->add('submit', SubmitType::class, [
-            'label' => 'Registrarse'
+            'label' => 'Guardar'
         ]);
     }
 }

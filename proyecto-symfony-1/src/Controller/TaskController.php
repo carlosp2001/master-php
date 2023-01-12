@@ -21,7 +21,7 @@ class TaskController extends AbstractController
 
 
         $task_repo = $this->getDoctrine()->getRepository(Task::class);
-        $tasks = $task_repo->findBy([], ['id'=>'DESC']);
+        $tasks = $task_repo->findBy([], ['id' => 'DESC']);
 //
 //        foreach ($tasks as $task) {
 //            // Imprimir el nombre del usuario mediante las relaciones del ORM
@@ -63,7 +63,7 @@ class TaskController extends AbstractController
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()  && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $task->setCreatedAt(new \DateTime('now'));
             $task->setUser($user);
             $em = $this->getDoctrine()->getManager();
@@ -87,7 +87,52 @@ class TaskController extends AbstractController
         $tasks = $user->getTasks();
 
         return $this->render('task/my-tasks.html.twig', [
-            'tasks'=>$tasks
-            ]);
+            'tasks' => $tasks
+        ]);
+    }
+
+    public function edit(Request $request, Task $task, UserInterface $user)
+    {
+        if (!$user || $user->getId() != $task->getUser()->getId()) {
+            return $this->redirectToRoute('tasks');
+        }
+            $form = $this->createForm(TaskType::class, $task);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+//                $task->setCreatedAt(new \DateTime('now'));
+//                $task->setUser($user);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($task);
+                $em->flush();
+
+                return $this->redirect(
+                    $this->generateUrl('task_detail', [
+                        'id' => $task->getId()
+                    ])
+                );
+
+            }
+
+        return $this->render('task/creation.html.twig', [
+            'edit' => true,
+            'form' =>$form->createView()
+        ]);
+    }
+
+    public function delete(Task $task, UserInterface $user)
+    {
+
+        if (!$user || $user->getId() != $task->getUser()->getId()) {
+            return $this->redirectToRoute('tasks');
+        }
+        if (!$task) {
+            return $this->redirectToRoute('tasks');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($task);
+        $em->flush();
+
+        return $this->redirectToRoute('tasks');
     }
 }
